@@ -7,11 +7,11 @@
     "url": "https://raw.githubusercontent.com/tkhe0002/Fit3179/main/js/ne_110m_admin_0_states.topojson",
     "format": {
           "type": "topojson",
-          "feature": "states"
+          "feature": "tl_2017_us_state"
         }
   },
   "transform": [{
-      "lookup": "properties.name",
+      "lookup": "properties.NAME",
       "from": {
         "data": {
           "url": "https://raw.githubusercontent.com/tkhe0002/Fit3179/main/data/Bachelor_Degree_Majors%20-%20total.csv"
@@ -36,7 +36,7 @@
       
     },
     "tooltip": [
-      {"field": "properties.name", "type": "nominal", "title": "State"},
+      {"field": "properties.NAME", "type": "nominal", "title": "State"},
       {"field": "per100people", "type": "quantitative"}
     ]
   }
