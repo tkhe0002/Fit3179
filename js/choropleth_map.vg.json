@@ -1,0 +1,44 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Bachelor degrees in USA 2019",
+  "width": 800,
+  "height": 600,
+  "data": {
+    "url": "https://raw.githubusercontent.com/tkhe0002/Fit3179/main/js/ne_110m_admin_0_states.topojson",
+    "format": {
+          "type": "topojson",
+          "feature": "states"
+        }
+  },
+  "transform": [{
+      "lookup": "properties.name",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/tkhe0002/Fit3179/main/data/Bachelor_Degree_Majors%20-%20total.csv"
+        },
+        "key": "State",
+        "fields": ["per100people"]
+      }
+    }
+    
+  ],
+  "projection": {
+    "type": "albersUsa"
+  },
+  "mark": {
+    "type": "geoshape"
+    },
+  "encoding": {
+    "color": {
+      "field": "per100people",
+      "type": "quantitative",
+      "scale": {"type": "log"}
+      
+    },
+    "tooltip": [
+      {"field": "properties.name", "type": "nominal", "title": "State"},
+      {"field": "per100people", "type": "quantitative"}
+    ]
+  }
+
+}
