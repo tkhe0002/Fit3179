@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Bachelor degrees in USA 2019",
-  "width": 500,
+  "title": "Percentage of Bachelor's degree holders in USA for each state for the year 2019",
+  "width": 700,
   "height": 600,
   "data": {
     "url": "https://raw.githubusercontent.com/tkhe0002/Fit3179/main/js/ne_110m_admin_0_states.topojson",
@@ -32,12 +32,22 @@
     "color": {
       "field": "per100people",
       "type": "quantitative",
-      "scale": {"type": "log"}
+      "title":"Percentage of Bachelor's degree holder",
+  
+      
+
+      "scale": {
+        "type": "threshold",
+        "domain": [31, 37, 42,50,59,64,85],
+        "range": ["#24A897", "#1D8679", "#19766A", "#16655B","#12544C", "#0E433C", "#0B322D", "#04110F"]
+
+        
+        }
       
     },
     "tooltip": [
       {"field": "properties.NAME", "type": "nominal", "title": "State"},
-      {"field": "per100people", "type": "quantitative"}
+      {"field": "per100people", "type": "quantitative", "title": "percentage of degree holders" ,"format": ".2f"}
     ]
   }
 
