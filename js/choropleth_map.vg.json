@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Percentage of Bachelor's degree holders in USA for each state for the year 2019",
+  "title": "",
   "width": 700,
   "height": 600,
   "data": {

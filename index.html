@@ -12,15 +12,16 @@
   
 </head>
 <body>
-  
+  <h1>Percentage of Bachelor's degree holders in USA for each state for the year 2019</h1>
 <div id="choropleth_map"></div>
-
+<p id="loading"></p>
 <script type="text/javascript">
-
+  document.getElementById("loading").value="Loading...";
   var spec2 = "js/choropleth_map.vg.json";
   vegaEmbed('#choropleth_map', spec2).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
+  document.getElementById("loading").value="";
 </script>
 
 </body>
