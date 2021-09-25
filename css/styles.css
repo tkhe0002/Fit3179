@@ -1,8 +1,9 @@
 #choropleth_map {
 	top:10px;
 	bottom: 100px; 
-	left: 100px;
-	right: 100px;
+	left: 88px;
+	/* right: 100px; */
+	text-align: center;
 	/*height: 1000px;
 	width: 800px;*/
 }
