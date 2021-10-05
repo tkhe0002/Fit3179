@@ -1,31 +1,25 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 800,
-  "height": 600,
-  "title": "age groups for each state",
-  "data": {
-    "url": "https://raw.githubusercontent.com/tkhe0002/Fit3179/main/data/Bachelor_Degree_Majors.csv"
-  },
+  "description": "A population pyramid for the US in 2000.",
+  "data": { "url": "https://raw.githubusercontent.com/tkhe0002/Fit3179/main/data/Bachelor_Degree_Majors.csv",
+    "format": {
+        "type": "csv"    }  },
+  
+  
   "params": [
-    
+            
     {
       "name": "State_selection",
       "bind": {
         "input": "select",
         "options": [
           null,
-          "25 and older",
-          "25 to 39",
-          
-          "40 to 64",
-          "65 and older"
+          "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "District of Columbia", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota",  "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
         ],
-        "labels":[
-          "Show All",
-          "25 and older",
-          "25 to 39",
-          "40 to 64",
-          "65 and older"
+        "labels": [
+          "All States",
+          "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "District of Columbia", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota",  "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
+       
         ],
         "name": "State Selection: "
       }
@@ -33,118 +27,81 @@
   ],
   "transform": [
     
-    {"filter": "State_selection == null || datum.Continent == State_selection"},
-    {
-      "calculate": "datum.Confirmed/datum.Population * 10000",
-      "as": "Cases per 10,000 Population"
-    }
+    {"filter": "State_selection == null || datum.State==State_selection" }
+
   ],
-  "encoding": {
-    "y": {
-      "field": "Age Group", "axis": null, "sort": "descending"
-    },
-    "x": {
-      "aggregate": "sum", "field": "Bachelor's Degree Holders",
-      "title": "population",
-      "axis": {"format": "s"},
-      "sort": "descending"
-    },
-    "color": {
-      "field": "Sex",
-      "scale": {"range": ["#675193", "#ca8861"]},
-      "legend": null
-    }
-  },
-  "layer": [
-    {
-      "selection": {
-        "continent_highlight": {
-          "type": "multi",
-          "fields": ["Continent"],
-          "bind": "legend"
-        }
+  "spacing": 0,
+  "hconcat": [{
+    "transform": [{
+      "filter": {"field": "Sex", "equal": "Female"}
+    }],
+    "title": "Female",
+    "mark": "bar",
+    "encoding": {
+      "y": {
+        "field": "Age Group", "axis": null, "sort": "descending"
       },
-      "mark": "circle",
-      "encoding": {
-        "size": {
-          "field": "Bachelor's Degree Holders",
-          "type": "quantitative",
-          "scale": {
-            "type": "threshold",
-            "domain": [1000000, 10000000, 50000000, 100000000, 500000000],
-            "range": [10, 50, 150, 200, 300, 400]
-          },
-          "legend": {"format": ".1s"}
-        },
-        "color": {
-          "field": "Continent",
-          "type": "nominal",
-          "scale": {
-            "domain": [
-              "North America",
-              "South America",
-              "Europe",
-              "Africa",
-              "Asia",
-              "Oceania"
-            ],
-            "range": [
-              "#e41a1c",
-              "#984ea3",
-              "#ff7f00",
-              "#a6cee3",
-              "#377eb8",
-              "#a65628"
-            ]
-          }
-        },
-        
-        "tooltip": [
-          {"field": "Country", "type": "nominal"},
-          {"field": "Confirmed", "type": "quantitative", "format": ","},
-          {"field": "Active", "type": "quantitative", "format": ","},
-          {"field": "Deaths", "type": "quantitative", "format": ","},
-          {"field": "Recovered", "type": "quantitative", "format": ","},
-          {
-            "field": "Cases per 10,000 Population",
-            "type": "quantitative",
-            "format": ".2f"
-          }
-        ]
-      }
-    },
-    {
-      "mark": {
-        "type": "text",
-        "align": "right",
-        "baseline": "middle",
-        "dx": -12,
-        "fontSize": 11.5,
-        "fontStyle": "italic"
+      "x": {
+        "aggregate":"sum","field": "Bachelors Degree Holders",
+        "title": "degrees",
+        "axis": {"format": "s"},
+        "scale": {
+            "type": "linear"},
+        "sort": "descending"
       },
-      "encoding": {
-        "text": {"field": "Country", "type": "nominal"},
-        "color": {"value": "black"},
-        "opacity": {
-          "condition": {
-            "test": "datum['Country'] == 'China' || datum['Country'] == 'Singapore' || datum['Country'] == 'Australia' || datum['Country'] == 'New Zealand' || datum['Country'] == 'Italy' || datum['Country'] == 'Yemen' ||  datum['Country'] == 'United States'",
-            "value": 1
-          },
-          "value": 0
-        },
-        "tooltip": [
-          {"field": "Country", "type": "nominal"},
-          {"field": "Confirmed", "type": "quantitative", "format": ","},
-          {"field": "Active", "type": "quantitative", "format": ","},
-          {"field": "Deaths", "type": "quantitative", "format": ","},
-          {"field": "Recovered", "type": "quantitative", "format": ","},
-          {
-            "field": "Cases per 10,000 Population",
-            "type": "quantitative",
-            "format": ".2f"
-          }
-        ]
-      }
+      "color": {
+        "field": "Sex",
+        "scale": {"range": ["#675193", "#ca8861"]},
+        "legend": null
+      },
+      
+      "tooltip": [
+        {"aggregate":"sum","field": "Bachelors Degree Holders", "type": "quantitative", "title": "no."}
+      ]
     }
+  }, {
+    "width": 20,
+    "view": {"stroke": null},
+    "mark": {
+      "type": "text",
+      "align": "center"
+    },
+    "encoding": {
+      "y": {"field": "Age Group", "type": "ordinal", "axis": null, "sort": "descending"},
+      "text": {"field": "Age Group", "type": "ordinal"}
+    }
+  }, {
+    "transform": [{
+      "filter": {"field": "Sex", "equal": "Male"}
+    }],
+    "title": "Male",
+    "mark": "bar",
+    "encoding": {
+      "y": {
+        "field": "Age Group", "title": null,
+        "axis": null, "sort": "descending"
+      },
+      "x": {
+         "aggregate":"sum","field": "Bachelors Degree Holders",
+        "title": "degrees",
+        "scale": {
+            "type": "linear"},
+        "axis": {"format": "s"}
+      },
+      
+      "color": {
+        "field": "Sex",
+        "legend": null
+      }
+      ,
+  "tooltip": [
+    {"aggregate":"sum","field": "Bachelors Degree Holders", "type": "quantitative", "title": "no."}
   ]
+    }
+  }],
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"grid": false}
+  }
+  
 }
