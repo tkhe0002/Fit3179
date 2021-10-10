@@ -11,10 +11,14 @@
   <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
   
 </head>
-<body style="background-color: #53aca0;">
-  <h1 style="text-align: center;">Percentage of Bachelor's degree holders in USA for each state for the year 2019</h1>
+<body style="background-color: rgb(243, 215, 205);">
+  <div class="pure-u-1">
+    <img src="css/image/banner.png" />
+</div>
+  <!-- <h1 style="text-align: center;">Percentage of Bachelor's degree holders in USA for each state for the year 2019</h1> -->
   <p id="loading" style="text-align: center;">Loading...</p>
 <div id="choropleth_map"></div>
+<br><br><br>
     <div id="population_pyramid"></div>
 
 <script type="text/javascript">
@@ -22,8 +26,17 @@
   var spec2 = "js/choropleth_map.vg.json";
   vegaEmbed('#choropleth_map', spec2).then(function(result) {
     document.getElementById("loading").innerHTML="";
+
+    var spec3 = "js/pyramid_map.vg.json";
+  vegaEmbed('#population_pyramid', spec3).then(function(result) {
+    
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
+
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  
   
 </script>
 

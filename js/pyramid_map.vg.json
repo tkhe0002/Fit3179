@@ -1,6 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "A population pyramid for the US in 2000.",
+  "title": "Number of bachelor's degree holders by age group",
+
+
+  
   "data": { "url": "https://raw.githubusercontent.com/tkhe0002/Fit3179/main/data/Bachelor_Degree_Majors.csv",
     "format": {
         "type": "csv"    }  },
@@ -31,12 +34,13 @@
 
   ],
   "spacing": 0,
+  
   "hconcat": [{
+     
     "transform": [{
       "filter": {"field": "Sex", "equal": "Female"}
     }],
     "title": "Female",
-    "mark": "bar",
     "encoding": {
       "y": {
         "field": "Age Group", "axis": null, "sort": "descending"
@@ -53,13 +57,39 @@
         "field": "Sex",
         "scale": {"range": ["#675193", "#ca8861"]},
         "legend": null
-      },
-      
-      "tooltip": [
-        {"aggregate":"sum","field": "Bachelors Degree Holders", "type": "quantitative", "title": "no."}
+      },"tooltip": [
+          {"aggregate":"sum","field": "Bachelors Degree Holders", "type": "quantitative", "title": "Number of degree holders:"}
+        ]
+  },
+    "layer":[
+           
+          {"mark":"bar","width":400},
+          {"mark": {
+              "type": "text",
+              
+              "color":"red",
+              "align": "right",
+              "baseline": "bottom",
+              "dx": -2,
+              "dy":9,
+              "width":100
+              
+
+            },
+
+         
+          "encoding": {
+            "text": { "aggregate":"sum","field": "Bachelors Degree Holders", "type": "quantitative"}
+          }
+          
+
+            
+          }
       ]
     }
-  }, {
+    
+
+  , {
     "width": 20,
     "view": {"stroke": null},
     "mark": {
@@ -75,7 +105,7 @@
       "filter": {"field": "Sex", "equal": "Male"}
     }],
     "title": "Male",
-    "mark": "bar",
+    "autosize":{"type": "fit", "contains": "padding"},
     "encoding": {
       "y": {
         "field": "Age Group", "title": null,
@@ -95,9 +125,35 @@
       }
       ,
   "tooltip": [
-    {"aggregate":"sum","field": "Bachelors Degree Holders", "type": "quantitative", "title": "no."}
+    {"aggregate":"sum","field": "Bachelors Degree Holders", "type": "quantitative", "title": "Number of degree holders:"}
   ]
-    }
+    },
+    "layer": [
+      {"mark":"bar","width":400},
+      {"mark": {
+          "type": "text",
+          "align": "left",
+          "baseline": "bottom",
+          "dx":0,
+          "dy":9,
+          "width":300
+          
+
+        },
+
+     
+      "encoding": {
+        "text": { "aggregate":"sum","field": "Bachelors Degree Holders", "type": "quantitative"}
+      }
+      
+
+        
+      }
+
+
+    ]
+    
+   
   }],
   "config": {
     "view": {"stroke": null},

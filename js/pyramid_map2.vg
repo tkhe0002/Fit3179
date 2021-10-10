@@ -1,0 +1,160 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Number of bachelor's degree holders by age group",
+  
+  
+    
+    "data": { "url": "https://raw.githubusercontent.com/tkhe0002/Fit3179/main/data/Bachelor_Degree_Majors.csv",
+      "format": {
+          "type": "csv"    }  },
+    
+    
+    "params": [
+              
+      {
+        "name": "State_selection",
+        "bind": {
+          "input": "select",
+          "options": [
+            null,
+            "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "District of Columbia", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota",  "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
+          ],
+          "labels": [
+            "All States",
+            "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "District of Columbia", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota",  "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
+         
+          ],
+          "name": "State Selection: "
+        }
+      }
+    ],
+    "transform": [
+      
+      {"filter": "State_selection == null || datum.State==State_selection" }
+  
+    ],
+    "spacing": 0,
+    
+    "hconcat": [{
+        "width":447,
+      "transform": [{
+        "filter": {"field": "Sex", "equal": "Female"}
+      }],
+      "title": "Female",
+      
+      "encoding": {
+        "y": {
+          "field": "Age Group", "axis": null, "sort": "descending"
+        },
+        "x": {
+          "aggregate":"sum","field": "Bachelors Degree Holders",
+          "title": "degrees",
+          "axis": {"format": "s"},
+          "scale": {
+              "type": "linear"},
+          "sort": "descending"
+        },
+        "color": {
+          "field": "Sex",
+          "scale": {"range": ["#675193", "#ca8861"]},
+          "legend": null
+        },"tooltip": [
+            {"aggregate":"sum","field": "Bachelors Degree Holders", "type": "quantitative", "title": "Number of degree holders:"}
+          ]
+    },
+      "layer":[
+             
+            {"mark":"bar","width":447},
+            {"mark": {
+                "type": "text",
+                "align": "right",
+                "baseline": "bottom",
+                "dx": -2,
+                "dy":9
+                
+
+              },
+
+           
+            "encoding": {
+              "text": { "aggregate":"sum","field": "Bachelors Degree Holders", "type": "quantitative"}
+            }
+            
+
+              
+            }
+        ]
+      }
+      
+  
+    , {
+      "width": 20,
+      "view": {"stroke": null},
+      "mark": {
+        "type": "text",
+        "align": "center"
+      },
+      "encoding": {
+        "y": {"field": "Age Group", "type": "ordinal", "axis": null, "sort": "descending"},
+        "text": {"field": "Age Group", "type": "ordinal"}
+      }
+    }, {
+      "transform": [{
+        "filter": {"field": "Sex", "equal": "Male"}
+      }],
+      "title": "Male",
+      "encoding": {
+        "y": {
+          "field": "Age Group", "title": null,
+          "axis": null, "sort": "descending"
+        },
+        "x": {
+           "aggregate":"sum","field": "Bachelors Degree Holders",
+          "title": "degrees",
+          "scale": {
+              "type": "linear"},
+          "axis": {"format": "s"}
+        },
+        
+        "color": {
+          "field": "Sex",
+          "legend": null
+        }
+        ,
+    "tooltip": [
+      {"aggregate":"sum","field": "Bachelors Degree Holders", "type": "quantitative", "title": "Number of degree holders:"}
+    ]
+      },
+      "layer": [
+        {"mark":"bar","width":447},
+        {"mark": {
+            "type": "text",
+            "align": "left",
+            "baseline": "bottom",
+            "dx": 2,
+            "dy":9
+            
+
+          },
+
+       
+        "encoding": {
+          "text": { "aggregate":"sum","field": "Bachelors Degree Holders", "type": "quantitative"}
+        }
+        
+
+          
+        }
+
+
+      ]
+      
+     
+    }],
+    "config": {
+      "view": {"stroke": null},
+      "axis": {"grid": false}
+    }
+    
+  }
+  

@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "",
-  "width": 800,
-  "height": 600,
+  "title": "percentage of people who got their bachelor's degrees for each state",
+  "width": 1000,
+  "height": 500,
   "data": {
     "url": "https://raw.githubusercontent.com/tkhe0002/Fit3179/main/js/ne_110m_admin_0_states.topojson",
     "format": {
