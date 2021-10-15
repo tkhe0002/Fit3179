@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "percentage of people who got their bachelor's degrees for each state",
-  "width": 1000,
+  "width": 1050,
   "height": 500,
   "data": {
     "url": "https://raw.githubusercontent.com/tkhe0002/Fit3179/main/js/ne_110m_admin_0_states.topojson",
@@ -12,43 +12,81 @@
   },
   "transform": [{
       "lookup": "properties.NAME",
+     
       "from": {
         "data": {
           "url": "https://raw.githubusercontent.com/tkhe0002/Fit3179/main/data/Bachelor_Degree_Majors%20-%20total.csv"
         },
         "key": "State",
-        "fields": ["per100people"]
-      }
+        "fields": ["per100people","lat","long","State"]
+      }     
     }
     
   ],
   "projection": {
     "type": "albersUsa"
   },
-  "mark": {
-    "type": "geoshape"
-    },
+  "mark":"geoshape",
   "encoding": {
     "color": {
       "field": "per100people",
       "type": "quantitative",
       "title":"% of Bachelor's degree holder",
-  
-      
-
       "scale": {
         "type": "threshold",
         "domain": [31, 37, 42,50,59,64,85],
-        "range": ["#24A897", "#1D8679", "#19766A", "#16655B","#12544C", "#0E433C", "#0B322D", "#04110F"]
-
-        
+        "range": ["#eef4f6","#cddfe6", "#accbd5", "#8ab6c4", "#69a1b4","#5087a", "#3e6978", "#355a67"]
         }
       
     },
+    
     "tooltip": [
       {"field": "properties.NAME", "type": "nominal", "title": "State"},
       {"field": "per100people", "type": "quantitative", "title": "Percentage" ,"format": ".2f"}
     ]
-  }
+  },
+  
+  "layer":[
+    
+    {"mark": {
+      "type": "geoshape"
+      }},
+      {"encoding":{
+        "longitude": {
+          "field": "long",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "color": {
+          "condition": {"test": "datum['State']==null || datum['State']=='District of Columbia'  || datum['State']=='Massachusetts' || datum['State']=='Colorado'  ", "value": "black"}, 
+          
+          "value": "grey"
+        }
+
+      },
+      "layer": [
+        {
+        "transform": [{"filter": "datum.State != null"}],
+        "mark": {
+          "type": "text","fontSize":8,
+          "dy": -10
+        },
+        "encoding": {
+          "text": {"field": "State", "type": "nominal","color":{"value": "#000000"}}
+        },
+        "config":{
+          "mark": {"invalid": null}
+        }
+      }]
+
+
+    }
+
+
+  ]
+
 
 }

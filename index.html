@@ -5,30 +5,165 @@
   <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
-  
+ 
   
   <!-- CSS file -->
   <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
   
 </head>
-<body style="background-color: rgb(243, 215, 205);">
+<body style="background-color:#eeede7">
+  
   <div class="pure-u-1">
     <img src="css/image/banner.png" />
 </div>
   <!-- <h1 style="text-align: center;">Percentage of Bachelor's degree holders in USA for each state for the year 2019</h1> -->
-  <p id="loading" style="text-align: center;">Loading...</p>
-<div id="choropleth_map"></div>
+  <br>
+  <p id="headingText" style="font-family: sans-serif;font-size: 30;" ></p>
+  <p id="loading" style="text-align: center;"></p>
+  
+<div id="choropleth_map">
+
+  
+</div>
 <br><br><br>
-    <div id="population_pyramid"></div>
+<div class="mainP" id="cards">
+
+<div><h2 style="font-family: sans-serif;">Top 3 States for bachelor's degree holders</h2></div>
+  <div  id="card1">
+    <img src="css/image/coloradoPic.jpg"  style="width:100%;height: 100px;">
+    <div class="cardContainer" >
+      <h4 style="font-family: sans-serif;"><b>3. Colorado</b></h4>
+      <button type="button" id="textButton" onclick="showInfoColorado();">Click for more information</button>
+    </div>
+  </div>
+
+  <div id="card2">
+    <img src="css/image/dcPic.jpg"  style="width:100%;height: 100px;">
+    <div class="cardContainer" >
+      <h4 style="font-family: sans-serif;"><b>1. District of Columbia</b></h4>
+      <button type="button" id="textButton" onclick="showInfoColumbia();">Click for more information</button>
+    </div>
+  </div>
+
+
+  <div id="card3">
+    <img src="css/image/massPic.jpg"  style="width:100%;height: 100px;">
+    <div class="cardContainer" >
+      <h4 style="font-family: sans-serif;"><b>2.Massachusetts</b></h4>
+      <button type="button" id="textButton" onclick="showInfoMass();">Click for more information</button>
+    </div></div>
+
+    <div id="showPopUp" class="popupBox" >
+
+      
+      <div class="popupContainer">
+        <button class="closePopup" id="close" onclick="closePopUP()">&times;</button>
+        <p id="showStateInfo"></p>
+      </div>
+    
+    </div>
+
+  </div>
+
+
+  <br><br>
+  <p id="fieldInfo" style="font-family: sans-serif;font-size: 30; font-weight: normal;" ></p></div><br>
+  <div  class="mainP" id="waffles" style="clear: both;">
+    <h2 style="font-family: sans-serif;">Breakdown of Bachelor's Degree Fields</h2>
+    <div  id="card1"  style="color: #5997ac; font-family: sans-serif;"><b>45% for Science,Engineering and related fields<b></b>
+      <div  id="science_waffle" ></div>
+    </div>
+  
+    <div  id="card2"  style="color: #a1cbdd; font-family: sans-serif;"><b>20% for Business fields<b></b>
+      <div  id="business_waffle" ></div>
+    </div>
+  
+    <div  id="card3"  style="color: #f7aec2; font-family: sans-serif;"><b>34% for Education, Arts,Humanities and other fields<b></b>
+      <div  id="education_waffle" ></div>
+    </div>
+  
+    
+    </div>
+<br><br>
+<div>
+  <p id="ageInfo" style="font-family: sans-serif;font-size: 30; font-weight: normal;" ></p></div>
+
+
+
+  <div style="clear: both; display:none;" id="titleCharts">
+    <h2 style="font-family: sans-serif;font-size: 30;float: left;"><b>Number of bachelor’s degree holders according to Age group<b></h2>
+    <h2 style="font-family: sans-serif;font-size: 30;float: right;margin-right:10px ;"><b>Total Gender-wise breakdown<b></h2>
+
+</div>
+
+<div style="clear: both;">
+    <div id="population_pyramid">
+     
+    </div>
+    <div id="pie_chart">
+      
+    </div></div>
+   <br><br>
+   <p style="margin-bottom: 100px;"></p>
+
 
 <script type="text/javascript">
-//   document.getElementById("loading").innerHTML="Loading...";
+
+  document.getElementById("loading").innerHTML="Loading ...";
+  
   var spec2 = "js/choropleth_map.vg.json";
-  vegaEmbed('#choropleth_map', spec2).then(function(result) {
+  vegaEmbed('#choropleth_map', spec2,{"actions": false}).then(function(result) {
     document.getElementById("loading").innerHTML="";
+    document.getElementById("headingText").innerHTML="A new report from the U.S. Census Bureau shows that over the past 15 years the number of Americans holding at least a bachelor’s degree has"+" steadily increased".bold()+", a trend that holds up for every racial and ethnic group."
++"Counties in the Northeast had the"+" highest average rate".bold()+" of residents with a bachelor’s degree in both 2005-2009 (25.6 percent) and 2015-2019 (29.8 percent), followed by counties in the West, Midwest, and South."+ 
+"Higher levels of educational attainment are often found in counties containing"+" major metropolitan areas".bold()+" such as Washington D.C, New York City, Chicago, and Seattle. Counties with a large number of undergraduate students also display higher levels of degree attainment. ";
+document.getElementById("ageInfo").innerHTML="In 2019 the first-quarter findings reported 29.5 million women in the labor force had at minimum a bachelor's degree, compared to 29.3 million men, according to an analysis by Pew Research of data collected from the U.S. Bureau of Labor Statistics. Women, ages 25 and older, now account"+" for more than half".bold()+" of the college-educated workforce (50.2%) — an 11% increase since 2000."+
+"The 1981-82 academic school year was the first time that women received more bachelor's degrees than men."+
+
+"Since then, women have"+" consistently outpaced".bold()+" men in earning that same level of education, receiving 57% of the bachelor's degrees awarded by U.S. institutions in the 2016-2017 academic year, "+
+"according to the National Center for Education Statistics.";
+
+document.getElementById("fieldInfo").innerHTML="In USA, to earn a Bachelor of Arts degrees, the majority of the coursework will typically be in the arts, such as social sciences, humanities or fine arts. Students who earn a Bachelor of Science degrees take the majority of their courses in life, physical or mathematical sciences."+
+"Students who major in certain fields such as"+" business, engineering or science".bold()+" find that the "+"curriculum is often more tightly structured".bold()+"  than it is in the humanities or socials sciences. Business, science and engineering majors may have to take more courses related to their major field of study and have fewer electives, or optional courses."
+  
+    //display the cards
+    document.getElementById("cards").style.display="block";
+    //display waffle charts
+    document.getElementById("waffles").style.display="block";
+    //diplay titles of 2 charts
+    document.getElementById("titleCharts").style.display="block";
+    
+
+
 
     var spec3 = "js/pyramid_map.vg.json";
-  vegaEmbed('#population_pyramid', spec3).then(function(result) {
+  vegaEmbed('#population_pyramid', spec3,{"actions": false}).then(function(result) {
+    
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  var spec4 = "js/science_waffle.vg.json";
+  vegaEmbed('#science_waffle', spec4,{"actions": false}).then(function(result) {
+    
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  var spec5 = "js/business_waffle.vg.json";
+  vegaEmbed('#business_waffle', spec5,{"actions": false}).then(function(result) {
+    
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+
+  var spec6 = "js/education_waffle.vg.json";
+  vegaEmbed('#education_waffle', spec6,{"actions": false}).then(function(result) {
+    
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+
+  var spec7 = "js/pieChart.vg.json";
+  vegaEmbed('#pie_chart', spec7,{"actions": false}).then(function(result) {
     
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
@@ -36,9 +171,50 @@
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 
+
+    //functions to show popup info abt top 3 states
+    function showInfoColorado(){
+      let textDisplay="Colorado continues to rank at the top of the nation’s “Best of” lists with a "+ "58%".bold()+" bachelor degree holders,"+ 
+"and their student body is no exception. It is ranked among the most educated states in the country."+
+"Access to "+"top-tier universities and programs".bold()+" , and one of the highest per capita concentrations of federal science, research and engineering facilities in the country, are the leading reasons why brilliant minds choose Colorado.";
+  showInfo(textDisplay);
+}
+    function showInfoMass(){
+      let textDisplay="For the age group of 25 and older, Massachusetts has a whooping"+ " 45% ".bold() +"bachelor degree holders in the year 2019"+
+      ". This was considered the highest share for this age group in the whole United States in 2019."+"The workers with bachelor's degrees in this state is"+" paid twice".bold()+" as that of the workers without bachelor degrees. This highly motivates the settlers to get their bachelor's degrees."
+  showInfo(textDisplay);
+
+    }
+    function showInfoColumbia(){
+      let textDisplay="As the popularity and importance of college have increased over the last several decades, so has the number of Americans with bachelor's degrees."+"District of Columbia was ranked"+" 1st ".bold()+"for the percentage of bachelor's degrees holders for the year 2019."+
+      "The District of Columbia had the"+" highest employment rate ".bold()+"highest employment rate in 2019, with about 71% of the population over the age of 16 in the labor force."+
+      " This state is one of the top in US which has a high percentage of bachelor, graduate and professional degree holders."
+      showInfo(textDisplay);
+
+    }
+
+    function showInfo(textDisplay){
+      var displayMessage=document.getElementById("showPopUp");
+      document.getElementById("showStateInfo").style.fontFamily="sans-serif"
+      document.getElementById("showStateInfo").innerHTML=textDisplay;
+      displayMessage.style.display="block";
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == document.getElementById("showPopUp")) {
+          displayMessage.style.display = "none";
+        }
+      }
+
+    }
+
+    function closePopUP(){
+      var displayMessage=document.getElementById("showPopUp");
+      displayMessage.style.display = "none";
+    }
   
   
 </script>
+
 
 </body>
 </html>

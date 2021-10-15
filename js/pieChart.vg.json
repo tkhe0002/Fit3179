@@ -1,0 +1,39 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "description": "A simple pie chart with labels.",
+  "height": 130,
+  "width": 340,
+  "data": { "url": "https://raw.githubusercontent.com/tkhe0002/Fit3179/main/data/Bachelor_Degree_Majors.csv",
+  "format": {
+      "type": "csv"    }  },
+  "transform": [{"filter": "datum.Sex != 'Total'"}],
+  "encoding": {
+    "theta": {
+      "field": "Bachelors Degree Holders",
+      "type": "quantitative",
+      "stack": true,
+      "aggregate": "sum"
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "arc", "innerRadius": 20},
+     
+      "encoding": {
+        "color": {
+          "field": "Sex",
+          "type": "nominal",
+          "legend": null,
+          "scale": {"range": ["#f7aec2", "#e9dde1"]}
+        }
+        ,"tooltip": [
+          {"field": "Bachelors Degree Holders", "type": "quantitative","aggregate": "sum", "title": "No. of degree holders:", "format":","}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "radius": 50, "fontSize": 16},
+      "encoding": {"text": {"field": "Sex", "type": "nominal"}}
+    }
+  ]
+}

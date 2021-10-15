@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Number of bachelor's degree holders by age group",
+  "title": "",
 
 
   
@@ -55,7 +55,7 @@
       },
       "color": {
         "field": "Sex",
-        "scale": {"range": ["#675193", "#ca8861"]},
+        "scale": {"range": ["#f7aec2", "#e9dde1"]},
         "legend": null
       },"tooltip": [
           {"aggregate":"sum","field": "Bachelors Degree Holders", "type": "quantitative", "title": "Number of degree holders:"}
@@ -68,9 +68,9 @@
               "type": "text",
               
               "color":"red",
-              "align": "right",
+              "align": "left",
               "baseline": "bottom",
-              "dx": -2,
+              "dx": 1,
               "dy":9,
               "width":100
               
@@ -79,7 +79,7 @@
 
          
           "encoding": {
-            "text": { "aggregate":"sum","field": "Bachelors Degree Holders", "type": "quantitative"}
+            "text": { "aggregate":"sum","field": "Bachelors Degree Holders", "type": "quantitative"},"color":{"value": "#af5166"}
           }
           
 
@@ -132,9 +132,9 @@
       {"mark":"bar","width":400},
       {"mark": {
           "type": "text",
-          "align": "left",
+          "align": "right",
           "baseline": "bottom",
-          "dx":0,
+          "dx":-1,
           "dy":9,
           "width":300
           
@@ -144,7 +144,7 @@
      
       "encoding": {
         "text": { "aggregate":"sum","field": "Bachelors Degree Holders", "type": "quantitative"}
-      }
+     , "color":{"value":"#af5166"}}
       
 
         

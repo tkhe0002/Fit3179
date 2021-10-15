@@ -1,0 +1,26 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+ 
+ "width":390,
+ "height":200,
+  "data": { "url": "https://raw.githubusercontent.com/tkhe0002/Fit3179/main/data/EducationFieldWaffleChartPreprocessedData.csv",
+    "format": {
+        "type": "csv"    }  },
+  "mark": "rect",
+  "encoding": {
+    "y": {"field": "Origin", "type": "nominal","title":""},
+    "x": {"field": "DividedPercentage", "type": "ordinal","title":""},
+    "color": {
+      "condition": {"test": "datum['Origin']=='Education Row 1' || datum['Origin']=='Education Row 2'", "value": "white"}, 
+      
+      "value": "#f7aec2"
+    }, "tooltip":[{"field":"TotalPercentage", "type": "quantitative", "title":"Percentage:"}
+
+    ]
+    
+  },
+  "config": {
+    "axis": {"grid": true, "tickBand": "extent","labels":false}
+  }
+  
+}

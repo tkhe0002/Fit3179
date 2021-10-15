@@ -4,22 +4,128 @@
 	left: 0px;
 	/* right: 100px; */
 	text-align: center;
+	border:#140d0d;
 	/*height: 1000px;
 	width: 800px;*/
 }
-
+.vega-bind{
+    text-align: start;
+}
 #population_pyramid {
 	top:10px;
-	bottom: 100px; 
+	bottom: 200px; 
 	left: 0px;
 	/* right: 100px; */
 	text-align: center;
+	float: left;
+	margin-bottom: 100px;
+	width: 67.7;
+}
+
+#pie_chart {
+	top:10px;
+	bottom: 100px; 
 	
-	height: 1000px;
-	width: 900;
+	/* right: 100px; */
+	text-align: center;
+	float: right;
+	
+	width: 33.3;
 }
 
 
+
+
+
+
+.popupBox{
+	display: none;
+	width: 100%;
+	height: 100%;
+	padding-top: 100px;
+	position: fixed;
+	/*hidden*/
+	z-index: 1;
+	left: 0 ;
+	top: 0 ;
+	background-color: black;
+	background-color:rgba(0,0,0,0.4);
+	overflow: auto;
+
+
+}
+
+#textButton{
+	background-color: inherit; /*inherit color of parent;*/
+	border: none;
+	color: blue;
+	size: 12px;
+
+
+}
+
+#textButton:hover{
+	background-color:rgb(180, 166, 166);
+}
+
+.popupContainer{
+	padding:24px ;
+	margin: auto;
+	border: 1px solid #f7aec2;
+	width: 80%;
+	background-color: #f7aec2;
+
+}
+
+
+/* The Close Button */
+.closePopup {
+	font-size: 28px;
+	font-weight: bold;
+	color: rgb(0,0,0);
+	float: right;
+	border: none;
+	background-color: inherit;
+	
+  }
+
+
+.mainP{
+
+	display: none;
+}
+
+#card1{
+	width: 33.3%;
+	background-color:white;
+	float: right;
+
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  
+
+}
+#card2{
+	width: 33.3%;
+	background-color:white;
+	float: left;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	margin-top: 0;
+	
+}
+#card3{
+	width: 33.3%;
+	background-color:white;
+	margin: 0 auto;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	
+}
+.cardContainer {
+	margin: 0 auto;
+	display:inline-block; 
+	width: 100%;
+	background-color:white;
+	height: 80px;
+  }
   
  
 .pure-u-1 img {
