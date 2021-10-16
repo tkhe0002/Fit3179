@@ -1,26 +1,27 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
  
- "width":390,
+ "width":394,
  "height":200,
   "data": { "url": "https://raw.githubusercontent.com/tkhe0002/Fit3179/main/data/businessFieldWaffleChartPreprocessedData.csv",
     "format": {
         "type": "csv"    }  },
   "mark": "rect",
   "encoding": {
-    "y": {"field": "Origin", "type": "nominal","title":""},
-    "x": {"field": "DividedPercentage", "type": "ordinal","title":""},
+    "y": {"field": "Origin", "type": "nominal","title":"","axis":{"gridColor":"white","gridWidth":4}},
+    "x": {"field": "DividedPercentage", "type": "ordinal","title":"","axis":{"gridColor":"white","gridWidth":4}},
     "color": {
-      "condition": {"test": "datum['Origin']=='Business Row 1' || datum['Origin']=='Business Row 2' || datum['Origin']=='Business Row 3'", "value": "white"}, 
+      "condition": {"test": "datum['Color']=='N' ", "value": "#DCDCDC"}, 
       
       "value": "#a1cbdd"
-    }, "tooltip":[{"field":"TotalPercentage", "type": "quantitative", "title":"Percentage:"}
+    }, "tooltip":[{"field":"TotalPercentage", "type": "quantitative", "title":"Percentage:", "format":".2f"}
 
     ]
     
   },
   "config": {
-    "axis": {"grid": true, "tickBand": "extent","labels":false}
+    "axis": {"grid": true, "tickBand": "extent","labels":false,"disable": true, "gridColor":"white","tickSize": 0, "tickColor":"white", "domainOpacity":0}
+  }
   }
   
-}
+  

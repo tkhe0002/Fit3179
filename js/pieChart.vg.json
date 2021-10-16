@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "description": "A simple pie chart with labels.",
-  "height": 130,
+  "height": 250,
   "width": 340,
   "data": { "url": "https://raw.githubusercontent.com/tkhe0002/Fit3179/main/data/Bachelor_Degree_Majors.csv",
   "format": {
@@ -17,7 +17,7 @@
   },
   "layer": [
     {
-      "mark": {"type": "arc", "innerRadius": 20},
+      "mark": {"type": "arc", "innerRadius": 60},
      
       "encoding": {
         "color": {
@@ -32,7 +32,7 @@
       }
     },
     {
-      "mark": {"type": "text", "radius": 50, "fontSize": 16},
+      "mark": {"type": "text", "radius": 90, "fontSize": 16},
       "encoding": {"text": {"field": "Sex", "type": "nominal"}}
     }
   ]

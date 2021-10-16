@@ -36,11 +36,13 @@
   "spacing": 0,
   
   "hconcat": [{
+    "height":200,
      
     "transform": [{
       "filter": {"field": "Sex", "equal": "Female"}
     }],
     "title": "Female",
+    
     "encoding": {
       "y": {
         "field": "Age Group", "axis": null, "sort": "descending"
@@ -63,7 +65,7 @@
   },
     "layer":[
            
-          {"mark":"bar","width":400},
+          {"mark":"bar","width":400,"height":200},
           {"mark": {
               "type": "text",
               
@@ -91,6 +93,7 @@
 
   , {
     "width": 20,
+    "height":200,
     "view": {"stroke": null},
     "mark": {
       "type": "text",
@@ -129,7 +132,7 @@
   ]
     },
     "layer": [
-      {"mark":"bar","width":400},
+      {"mark":"bar","width":400,"height":200},
       {"mark": {
           "type": "text",
           "align": "right",

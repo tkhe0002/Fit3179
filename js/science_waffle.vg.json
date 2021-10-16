@@ -1,26 +1,26 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
  
- "width":390,
+ "width":394,
  "height":200,
   "data": { "url": "https://raw.githubusercontent.com/tkhe0002/Fit3179/main/data/scienceFieldWaffleChartPreprocessedData.csv",
     "format": {
         "type": "csv"    }  },
-  "mark": "rect",
-  "encoding": {
-    "y": {"field": "Origin", "type": "nominal","title":""},
-    "x": {"field": "DividedPercentage", "type": "ordinal","title":""},
-    "color": {
-      "condition": {"test": "datum['Origin']=='Science and Engineering Related Fields Row 1' || datum['Origin']=='Science and Engineering Related Fields Row 2'", "value": "white"}, 
+        "mark": "rect",
+        "encoding": {
+          "y": {"field": "Origin", "type": "nominal","title":"","axis":{"gridColor":"white","gridWidth":4}},
+          "x": {"field": "DividedPercentage", "type": "ordinal","title":"","axis":{"gridColor":"white","gridWidth":4}},
+          "color": {
+            "condition": {"test": "datum['Color']=='N' ", "value": "#DCDCDC"}, 
+            
+            "value": "#5997ac"
+          }, "tooltip":[{"field":"TotalPercentage", "type": "quantitative", "title":"Percentage:", "format":".2f"}
       
-      "value": "#5997ac"
-    }, "tooltip":[{"field":"TotalPercentage", "type": "quantitative", "title":"Percentage:"}
-
-    ]
-    
-  },
-  "config": {
-    "axis": {"grid": true, "tickBand": "extent","labels":false}
-  }
+          ]
+          
+        },
+        "config": {
+          "axis": {"grid": true, "tickBand": "extent","labels":false,"disable": true, "gridColor":"white","tickSize": 0, "tickColor":"white", "domainOpacity":0}
+        }
   
 }

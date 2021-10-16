@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "percentage of people who got their bachelor's degrees for each state",
-  "width": 1050,
+  "title": "",
+  "width": "container",
   "height": 500,
   "data": {
     "url": "https://raw.githubusercontent.com/tkhe0002/Fit3179/main/js/ne_110m_admin_0_states.topojson",
@@ -31,7 +31,16 @@
     "color": {
       "field": "per100people",
       "type": "quantitative",
-      "title":"% of Bachelor's degree holder",
+      "title": "percentage of bachelor's degree holder",
+      
+      "legend":{
+        "orient": "bottom",
+        "direction": "horizontal",
+        "columns": 2,
+        "titleFontSize":9
+      
+        
+      },
       "scale": {
         "type": "threshold",
         "domain": [31, 37, 42,50,59,64,85],
