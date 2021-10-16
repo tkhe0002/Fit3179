@@ -58,7 +58,7 @@
   "layer":[
     
     {"mark": {
-      "type": "geoshape"
+      "type": "geoshape", "stroke":"#f7aec2"
       }},
       {"encoding":{
         "longitude": {
