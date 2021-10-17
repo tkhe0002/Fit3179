@@ -27,7 +27,7 @@
           "scale": {"range": ["#f7aec2", "#e9dde1"]}
         }
         ,"tooltip": [
-          {"field": "Bachelors Degree Holders", "type": "quantitative","aggregate": "sum", "title": "No. of degree holders:", "format":","}
+          {"field": "Bachelors Degree Holders", "type": "quantitative","aggregate": "sum", "title": "Number of degree holders", "format":","}
         ]
       }
     },

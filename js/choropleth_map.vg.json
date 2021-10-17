@@ -43,8 +43,8 @@
       },
       "scale": {
         "type": "threshold",
-        "domain": [31, 37, 42,50,59,64,85],
-        "range": ["#eef4f6","#cddfe6", "#accbd5", "#8ab6c4", "#69a1b4","#5087a", "#3e6978", "#355a67"]
+        "domain": [31, 37, 42,50,58,85],
+        "range": ["#f8fbfb","#deebee", "#b6d4db", "#75aebb","#5a9fae", "#4a8996", "#305962"]
         }
       
     },

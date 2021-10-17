@@ -14,7 +14,8 @@
             "condition": {"test": "datum['Color']=='N' ", "value": "#DCDCDC"}, 
             
             "value": "#5997ac"
-          }, "tooltip":[{"field":"TotalPercentage", "type": "quantitative", "title":"Percentage:", "format":".2f"}
+          }, "tooltip":[{"field":"TotalPercentage", "type": "quantitative", "title":"Percentage", "format":".2f"},
+            {"field": "Value", "type": "quantitative", "title": "Number of degrees" ,"format": ","}
       
           ]
           
